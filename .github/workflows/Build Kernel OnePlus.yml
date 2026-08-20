@@ -1396,6 +1396,9 @@ jobs:
             scripts/config --file out/.config -e LTO_CLANG_THIN
             scripts/config --file out/.config -d LTO_CLANG_NONE
             scripts/config --file out/.config -d LTO_CLANG_FULL
+            scripts/config --file "$CONFIG_FILE" \
+            --enable SECCOMP \
+            --enable SECCOMP_FILTER 
           fi
 
           make O=out "${MAKE_ARGS[@]}" olddefconfig --no-print-directory

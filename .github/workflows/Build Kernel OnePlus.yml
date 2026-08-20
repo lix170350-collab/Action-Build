@@ -1402,6 +1402,8 @@ jobs:
           fi
 
           make O=out "${MAKE_ARGS[@]}" olddefconfig --no-print-directory
+          scripts/config --file out/.config -e SECCOMP
+          scripts/config --file out/.config -e SECCOMP_FILTER
           make -j"$(nproc --all)" O=out "${MAKE_ARGS[@]}"
           ccache -s
 
